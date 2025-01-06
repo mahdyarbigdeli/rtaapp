@@ -1,0 +1,15 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 1rem;
+    h1 {
+        text-align: center;
+    }
+}
+
+.channels {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}

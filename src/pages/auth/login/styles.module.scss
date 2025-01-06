@@ -1,0 +1,19 @@
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: end;
+    justify-content: center;
+    color: white;
+    border: 1px solid white;
+    padding: 2.5em 3em;
+    border-radius: 1rem;
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

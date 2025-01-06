@@ -1,0 +1,48 @@
+.select {
+    width: 100%;
+    border: none !important;
+    outline: none !important;
+    border-radius: 0.25rem;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.input {
+    width: 100%;
+    border: none !important;
+    outline: none !important;
+    border-radius: 0.25rem;
+    font-family: inherit;
+    padding: 0.5em 1em;
+    transition: all 1s ease;
+    &:placeholder-shown {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    &:not(:placeholder-shown) {
+        background-color: white;
+    }
+
+    &:focus,
+    &:hover {
+        background-color: white;
+    }
+}
+
+.cellContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+
+    border-radius: 0.25rem;
+    height: max-content;
+    transition: 0.5s all ease;
+    * {
+        font-size: 0.7rem !important;
+        color: black;
+    }
+}

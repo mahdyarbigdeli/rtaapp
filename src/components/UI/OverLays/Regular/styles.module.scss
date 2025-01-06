@@ -1,0 +1,26 @@
+.overlay {
+    background-color: var(--bs-warning);
+    flex-direction: column;
+    padding: 2em 1em;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0.3rem 0.3rem 3rem 1rem rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    color: var(--color-primary);
+
+    * {
+        // color: var(--bs-primary);
+    }
+    svg {
+        scale: 1;
+        font-size: 4rem;
+    }
+    h1 {
+        font-size: 1.2rem;
+        margin-top: 0;
+        line-height: 0;
+    }
+}

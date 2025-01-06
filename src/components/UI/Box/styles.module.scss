@@ -1,0 +1,74 @@
+.box {
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: relative;
+    // transition: var(--trans-field);
+    border: none;
+    border-radius: 0 0 0.5rem 0.5rem !important;
+    .content {
+        display: grid;
+        width: 100%;
+        transition: inherit !important;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 2em;
+        resize: both !important;
+        overflow: auto !important;
+        border-radius: 0.5rem;
+
+        &::-webkit-resizer {
+            width: 3rem !important;
+            height: 3rem !important;
+        }
+    }
+
+    .OverLay {
+        position: absolute;
+        inset: 0;
+        z-index: 10000000000;
+        margin: auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.glassMorphism {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0rem 0rem 0.5rem 0rem rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease forwards !important;
+    border-radius: 0.5rem !important;
+}
+
+.loading {
+    .content {
+        filter: blur(10px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .box {
+        .content {
+            padding: 1em !important;
+        }
+    }
+
+    .isFieldSet {
+        .content {
+            padding-top: 2rem !important;
+        }
+    }
+}

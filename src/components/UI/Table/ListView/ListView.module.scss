@@ -1,0 +1,23 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 1rem;
+    gap: 1rem;
+
+    .tableBody {
+        height: 100%;
+    }
+
+    .tableFooter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 40rem;
+        align-self: center;
+    }
+}
+
+.true {
+    grid-template-rows: 1fr;
+}

@@ -1,0 +1,26 @@
+.channel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid;
+    padding: 2em;
+    border-radius: 1rem;
+    .info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0rem;
+        font-size: 2rem;
+        flex-direction: column;
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    }
+    .buttons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}

@@ -1,0 +1,16 @@
+.accordion {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 0.5s ease all !important;
+    opacity: 0;
+
+    .children {
+        overflow: hidden;
+        transition: inherit !important;
+    }
+}
+
+.expand {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}

@@ -1,0 +1,107 @@
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.75rem;
+    padding: 0em 1em !important;
+    min-width: max-content;
+    
+    border-radius: 100rem;
+    position: relative;
+    font-size: 0.8rem;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --question-color: #0d6efd; /* Using Bootstrap's primary color */
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --indigo-color: #6610f2;
+    --tertiary-color: #6f42c1;
+    --quaternary-color: #d63384; /* Example color */
+    --quinary-color: #20c997; /* Example color */
+    --senary-color: #fd7e14; /* Example color */
+
+    --color: var(--danger-color); /* Default color set to Bootstrap's danger color */
+    overflow: hidden;
+    gap: 0.25rem;
+    color: white !important;
+
+    &:before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        background-color: var(--color);
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    border: 2px solid var(--color);
+
+    svg {
+        font-size: 1rem;
+    }
+
+    color: var(--color);
+}
+
+.fill {
+    border: none !important;
+    &::after {
+        all: unset;
+    }
+
+    background-color: var(--color);
+    color: white;
+}
+
+.success {
+    --color: var(--success-color);
+}
+
+.danger {
+    --color: var(--danger-color);
+}
+
+.warning {
+    --color: var(--warning-color);
+    color: black;
+}
+
+.info {
+    --color: var(--info-color);
+}
+
+.question {
+    --color: var(--question-color);
+}
+
+.primary {
+    --color: var(--primary-color);
+}
+
+.secondary {
+    --color: var(--secondary-color);
+}
+
+.indigo {
+    --color: var(--indigo-color);
+}
+
+.tertiary {
+    --color: var(--tertiary-color);
+}
+
+.quaternary {
+    --color: var(--quaternary-color);
+}
+
+.quinary {
+    --color: var(--quinary-color);
+}
+
+.senary {
+    --color: var(--senary-color);
+}

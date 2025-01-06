@@ -1,0 +1,45 @@
+.disabled {
+    opacity: 0.2;
+    pointer-events: none !important;
+    * {
+        pointer-events: none !important;
+    }
+}
+
+.grid {
+    transition: 0.5s ease all !important;
+}
+
+.OverLay {
+    opacity: 0;
+    transition: all 0.5s ease;
+    pointer-events: none;
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glassMorphism {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    backdrop-filter: blur(1rem) !important;
+    box-shadow: 0rem 0rem 0.5rem 0rem rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    transition: all 0.5s ease;
+}
+
+.loading {
+    display: none !important;
+    .OverLay {
+        opacity: 1;
+        pointer-events: all;
+    }
+    .content {
+        filter: blur(5px) !important;
+    }
+}

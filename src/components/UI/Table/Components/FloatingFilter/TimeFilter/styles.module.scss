@@ -1,0 +1,56 @@
+.cellContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    padding: 0.75em;
+    background-color: white;
+    height: 2rem;
+    border-radius: 0.25rem;
+    z-index: 9999 !important;
+    color: black;
+    background-color: var(--color-dont-have-value);
+    transition: all 0.5s ease;
+
+    .container {
+        display: flex;
+        align-items: start;
+        width: 100%;
+        cursor: pointer;
+        .title {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            svg {
+                font-size: 1.25rem;
+            }
+            span {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+        }
+
+        .input {
+            display: none;
+        }
+    }
+
+    .clear {
+        display: flex;
+        color: var(--danger);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    &:focus,
+    &:hover {
+        background-color: var(--color-has-value);
+    }
+}
+
+.hasValue {
+    background-color: var(--color-has-value);
+}

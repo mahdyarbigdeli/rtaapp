@@ -1,0 +1,85 @@
+.button {
+    --button-back-color: white;
+    --button-font-color: white;
+
+    all: unset;
+    padding: 0em 1em;
+    border-radius: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: 2rem;
+    cursor: pointer;
+    gap: 0.25rem;
+    transition: var(--trans-button);
+
+    background-color: var(--button-back-color);
+    color: var(--button-font-color);
+
+    * {
+        color: var(--button-font-color);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+    }
+}
+
+.success {
+    --button-back-color: var(--bs-success);
+    --button-font-color: var(--bs-light);
+}
+
+.type-2 {
+    --button-back-color: var(--bs-danger);
+    --button-font-color: var(--bs-light);
+}
+
+.primary {
+    --button-back-color: var(--bs-primary);
+    --button-font-color: var(--bs-light);
+}
+
+.type-4 {
+    --button-back-color: transparent;
+    --button-font-color: var(--bs-primary);
+    border: 1px solid var(--bs-primary);
+}
+
+.type-5 {
+    --button-back-color: var(--bs-secondary);
+    --button-font-color: var(--bs-light);
+}
+
+.danger {
+    --button-back-color: var(--bs-danger);
+    --button-font-color: var(--bs-light);
+}
+
+.warning {
+    --button-back-color: var(--bs-warning);
+    --button-font-color: var(--bs-dark);
+}
+
+.indigo {
+    --button-back-color: var(--bs-indigo);
+    --button-font-color: var(--bs-light);
+}
+
+.normal {
+}
+
+.small {
+    font-size: 0.8rem !important;
+}
+
+.big {
+}
+
+.panel-list-item {
+    background-color: var(--bs-light) !important;
+    * {
+        color: var(--bs-dark) !important;
+    }
+}

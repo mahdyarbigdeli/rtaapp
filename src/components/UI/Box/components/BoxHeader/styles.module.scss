@@ -1,0 +1,42 @@
+.header,
+.legend {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0.5rem;
+    padding: 0 1em !important;
+    align-self: start;
+    font-size: 1rem !important;
+    padding: 1em !important;
+    text-align: right !important;
+
+    * {
+        color: inherit !important;
+    }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    cursor: grab;
+    &:active {
+        cursor: move;
+    }
+}
+
+.legendFielSet {
+    border-radius: 0.5rem;
+    background-color: white;
+    padding: 0.5em 1em !important;
+    font-size: 1rem !important;
+    line-height: 0 !important;
+    color: rgb(0, 0, 0) !important;
+    margin-right: 3rem;
+    margin-bottom: -1rem;
+    z-index: 2;
+    text-align: right !important;
+}
+
+@media only screen and (max-width: 400px) {
+    .legendFielSet {
+        margin-right: 1rem !important;
+        font-size: 0.8rem !important;
+    }
+}

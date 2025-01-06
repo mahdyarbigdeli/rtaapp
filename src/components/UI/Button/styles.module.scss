@@ -1,0 +1,64 @@
+.button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.25em 1em;
+    border-radius: 0.5rem;
+    min-width: 10ch;
+    cursor: pointer !important;
+    &:disabled {
+        opacity: 0.5 !important;
+        cursor: no-drop !important;
+    }
+}
+
+.success {
+    background-color: var(--bs-success);
+    color: white;
+}
+
+.error {
+    color: var(--bs-danger);
+}
+
+.warning {
+    color: var(--bs-warning);
+}
+
+.primary {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+}
+
+.secondary {
+    background-color: var(--bs-secondary);
+    color: var(--bs-white);
+}
+
+.danger {
+    background-color: var(--bs-danger);
+    color: var(--bs-white);
+}
+
+.info {
+    background-color: var(--bs-info);
+    color: var(--bs-white);
+}
+
+.light {
+    background-color: var(--bs-light);
+    color: var(--bs-dark);
+}
+
+.dark {
+    background-color: var(--bs-dark);
+    color: var(--bs-white);
+}
+
+.link {
+    background-color: transparent;
+    color: var(--bs-primary);
+    text-decoration: underline;
+}

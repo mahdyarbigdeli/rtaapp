@@ -1,0 +1,47 @@
+.container {
+    width: 100%;
+    position: relative;
+}
+
+.picker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5em;
+    padding-left: 1em;
+    // line-height: 2.75;
+    height: 2rem;
+    width: 100%;
+}
+
+.wrapperClassName {
+    background-color: transparent !important;
+    position: absolute;
+    height: 0;
+    width: 0;
+    bottom: 0;
+    opacity: 0;
+    left: 2rem;
+    bottom: 0;
+}
+
+.isMobilePicker {
+    .wrapperClassName {
+        position: fixed;
+        left: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+    }
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    svg {
+        margin-top: -0.5rem;
+        font-size: 1rem !important;
+        cursor: pointer;
+    }
+}

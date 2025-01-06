@@ -1,0 +1,439 @@
+.field {
+    all: unset;
+    position: relative !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0.5rem;
+    // width: calc(100% - 2.1em);
+    // padding: 0.5em 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var((--trans-field));
+    background-color: white !important;
+    text-align: right;
+    direction: rtl;
+
+    * {
+        font-size: 0.8rem !important;
+    }
+
+    .legend {
+        background-color: transparent;
+        color: white;
+        font-size: 0.7rem !important;
+        gap: 0.25rem;
+        margin-bottom: -1rem;
+        padding: 0.25em 1em !important;
+        margin: 0 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        border-radius: 0.4rem;
+        transition: 1s ease all;
+        height: max-content;
+        pointer-events: none !important;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        margin-right: 2rem !important;
+    }
+
+    .input {
+        all: unset;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: inherit;
+        padding: 0.5em 1em;
+        color: var(--color-primary);
+        height: 2rem;
+    }
+
+    .hideIcon {
+        font-size: 1.5rem !important;
+        margin-left: 0.5rem;
+        color: white;
+        cursor: pointer;
+        position: relative;
+        transform: translateY(-25%);
+        top: 50%;
+        left: 0.5rem;
+    }
+
+    .textArea {
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: inherit;
+        padding: 0.45em 1em;
+        font-family: inherit !important;
+        box-shadow: none !important;
+        outline: none !important;
+        background-color: transparent;
+        resize: none;
+        border: none !important;
+        color: white;
+    }
+
+    .imageInput {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: calc(100% + 0.75rem);
+        width: 100%;
+        border-radius: inherit;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        top: -0.33rem;
+
+        input {
+            display: none;
+        }
+        svg {
+            width: 3rem;
+            height: 3rem;
+        }
+        span {
+            z-index: 2;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            svg {
+                width: initial;
+                height: initial;
+            }
+        }
+        .hasFile {
+            background-color: var(--color-dark-2);
+            padding: 0.33em 0.75em;
+            border-radius: 100rem;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            object-fit: cover;
+            top: 0;
+        }
+    }
+    .select {
+        width: 100%;
+        border-radius: inherit;
+        .controll {
+            background-color: transparent;
+            width: 100% !important;
+            border: none !important;
+        }
+        .single {
+            color: white !important;
+        }
+    }
+
+    .radio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.25em 1em;
+        input {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
+    .switch {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5em 1em;
+    }
+
+    .dateRangePicker {
+        background-color: transparent;
+        border: none !important;
+        * {
+            --text: white;
+            svg {
+                background-color: rebeccapurple !important;
+            }
+            img {
+                background-color: rebeccapurple !important;
+            }
+        }
+    }
+
+    .color {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        input {
+            all: unset;
+            min-width: 7rem;
+            height: 2rem;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+
+    .modalField {
+        display: flex;
+        width: 100%;
+        padding: 0.5em 1em;
+        gap: 0.5rem;
+        justify-content: space-between;
+        align-items: start;
+        .edit {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            gap: 0.25rem;
+            background-color: var(--color-warning);
+            color: black;
+            border-radius: 0.5rem;
+            padding: 0.25em 1em;
+            font-size: 0.7rem !important;
+            cursor: pointer;
+        }
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            .item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0.25rem;
+                padding: 0.25em 0.5em;
+                background-color: gray;
+                gap: 0.5rem;
+                cursor: pointer;
+                transition: all 0.25s ease;
+                span {
+                    text-overflow: ellipsis;
+                    height: 1.25rem;
+                    max-width: 15ch;
+                    overflow: hidden;
+                }
+                &:hover {
+                    background-color: var(--color-danger);
+                }
+            }
+        }
+    }
+
+    .imagePreview {
+        display: flex;
+        width: 5rem;
+        height: 5rem;
+        font-size: 5rem !important;
+        border-radius: 1rem;
+        object-fit: contain;
+        * {
+            font-size: 5rem !important;
+        }
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        padding: 0em 0.5em;
+        gap: 0.5rem;
+        user-select: none;
+        padding: 0.75em 1em !important;
+        * {
+            color: inherit !important;
+            border-color: inherit !important;
+        }
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    .file {
+        width: 100%;
+        padding: 0.5em 1em;
+        display: grid;
+        grid-template-columns: 1fr max-content;
+        gap: 1rem;
+
+        input {
+            display: none;
+        }
+        .hasFile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5em 1em;
+            gap: 0.25rem;
+            line-height: 0;
+            border-radius: 100rem;
+            background-color: var(--bs-success);
+            color: white;
+            cursor: pointer;
+            button {
+                all: unset;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.25rem;
+            }
+        }
+        .noFile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5em 1em;
+            gap: 0.25rem;
+            line-height: 1;
+            border-radius: 0.5rem;
+            background-color: var(--bs-warning);
+            color: black;
+            cursor: pointer;
+            width: max-content;
+        }
+        .fileList {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            .fileItem {
+                background-color: var(--color-success);
+                color: black;
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                padding: 0.25em 1em;
+                border-radius: 100rem;
+                cursor: pointer;
+                .fileName {
+                    max-width: 15ch;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+        .deleteButton {
+            all: unset;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            background-color: var(--color-danger);
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+
+    .errorBox {
+        background-color: var(--color-danger);
+        display: flex;
+        align-items: center;
+        min-width: max-content;
+        animation: fade 1s ease forwards;
+        opacity: 0;
+        color: white;
+        font-size: 0.7rem !important;
+        gap: 0.25rem;
+        padding: 0.5em 1em !important;
+        border-radius: 0.4rem;
+        z-index: 2;
+        margin-top: -1rem;
+        margin-left: 0.5rem;
+
+        span {
+            line-height: 0;
+        }
+        svg {
+            line-height: 0;
+        }
+    }
+
+    .tooltip {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        padding: 0 !important;
+        padding: 0.5em !important;
+        height: max-content !important;
+    }
+}
+
+.disabled {
+    opacity: 0.2;
+    pointer-events: none !important;
+    * {
+        pointer-events: none !important;
+    }
+}
+
+.hasValue {
+    color: white !important;
+
+    .legend {
+        background-color: white !important;
+        color: white !important;
+        * {
+            color: var(--bs-primary) !important;
+        }
+    }
+}
+
+.readOnly {
+    pointer-events: none !important;
+
+    * {
+        pointer-events: none !important;
+    }
+}
+
+.primary {
+    border-color: var(--color-primary) !important;
+    .legend {
+        color: var(--color-primary) !important;
+        border: 1px solid var(--color-primary) !important;
+    }
+}
+
+.glassMorphism {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+
+    .legend {
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    input,
+    textarea {
+        color: white !important;
+    }
+
+    .hasValue {
+        background-color: rebeccapurple !important;
+    }
+
+    &:hover {
+        border-color: white !important;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        scale: 0.8;
+    }
+    to {
+        opacity: 1;
+    }
+}
