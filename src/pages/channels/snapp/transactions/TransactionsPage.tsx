@@ -102,13 +102,14 @@ export default function TransactionsPage() {
         const transaction_id = props.data.transaction_id;
         return (
           <CellContainer
-            onClick={() => {
-              ShowQuestion({
-                onConfirm() {
-                  updateStatusMutate(transaction_id);
-                },
-              });
-            }}>
+            // onClick={() => {
+            //   ShowQuestion({
+            //     onConfirm() {
+            //       updateStatusMutate(transaction_id);
+            //     },
+            //   });
+            // }}
+            >
             <CellStatus
               defaultValue={props.value}
               options={[
