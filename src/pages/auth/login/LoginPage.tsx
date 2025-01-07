@@ -26,9 +26,9 @@ export default function LoginPage() {
     mutationFn: LoginAPI,
     onSuccess: (data) => {
       // it hast to be changed
-      dispatcher(userActions.login(data.dat));
+      dispatcher(userActions.login(data.data));
       setTimeout(() => {
-        navigate("/channels");
+        // navigate("/channels");
       }, 200);
     },
   });
