@@ -10,3 +10,4 @@ export const GetTokenByCredentionals = () => {
   const url = `${VITE_API_URL}${tokenByCredentials}`;
   return postRequest(url);
 };
+

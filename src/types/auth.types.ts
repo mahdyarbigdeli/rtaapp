@@ -1,3 +1,5 @@
+import { ISelectUser } from "./auth/auth.types";
+
 export interface ILogin {
   username: string;
   password: string;
@@ -14,4 +16,9 @@ export interface IUser {
 
 interface Channel {
   snappay: boolean;
+}
+
+export interface IAssigineChannel {
+  name: string;
+  user: ISelectUser;
 }

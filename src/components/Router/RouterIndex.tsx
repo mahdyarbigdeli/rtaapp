@@ -8,6 +8,8 @@ import RootLayout from "./layout/RootLayout";
 export default function RouterIndex() {
   const { user } = useGlobalStates();
 
+  console.log(user);
+
   return (
     <BrowserRouter>
       <Routes>

@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import ChannelsLayout from "./layout/layout";
 import TransactionsPage from "./snapp/transactions/TransactionsPage";
+import AssigineeUser from "./assigne-user/AssigineeUser";
 
 export default function ChannelsIndex() {
   return (
@@ -12,6 +13,11 @@ export default function ChannelsIndex() {
       <Route
         path='snapp/*'
         element={<TransactionsPage />}
+      />
+
+      <Route
+        path='assignee-user/*'
+        element={<AssigineeUser />}
       />
     </Routes>
   );

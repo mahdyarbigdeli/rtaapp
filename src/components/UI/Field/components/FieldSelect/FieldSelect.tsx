@@ -60,12 +60,12 @@ export default function FieldSelect<T>(props: Props<T>) {
         value: item[selectKeys.value],
       }))}
       isMulti={selectMode === "multi"}
-      onChange={(values: any) => onChange(values)}
+      onChange={(values) => onChange(values)}
       placeholder={"انتخاب کنید ...."}
       value={value}
       isSearchable={false}
       styles={{
-        container(base: any, _props: any) {
+        container(base, props) {
           return {
             ...base,
             width: "100%",
@@ -74,7 +74,7 @@ export default function FieldSelect<T>(props: Props<T>) {
             fontFamily: "iran-sans",
           };
         },
-        control(base: any) {
+        control(base, props) {
           return {
             ...base,
             backgroundColor: "transparent",
@@ -84,7 +84,7 @@ export default function FieldSelect<T>(props: Props<T>) {
             fontFamily: "iran-sans",
           };
         },
-        menu(base: any) {
+        menu(base, props) {
           return {
             ...base,
             backgroundColor: "white",
@@ -93,7 +93,7 @@ export default function FieldSelect<T>(props: Props<T>) {
             fontFamily: "iran-sans",
           };
         },
-        option(base: any) {
+        option(base, props) {
           return {
             ...base,
             backgroundColor: "transparent",
@@ -101,13 +101,13 @@ export default function FieldSelect<T>(props: Props<T>) {
             fontFamily: "iran-sans",
           };
         },
-        placeholder(base: any) {
+        placeholder(base, props) {
           return {
             ...base,
             color: "white",
           };
         },
-        singleValue(base: any) {
+        singleValue(base, props) {
           return {
             ...base,
             color: "white",

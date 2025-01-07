@@ -1,0 +1,76 @@
+.locationList {
+    position: absolute;
+    z-index: 10000;
+    bottom: -1rem;
+    left: 0rem;
+    display: flex;
+    .summary {
+        background-color: white;
+        padding: 2em;
+        border-radius: 0 1rem 0 0;
+        .list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.5rem;
+            max-height: 20rem;
+            overflow: auto;
+            margin-top: 1rem;
+            padding-right: 1em;
+
+            .item {
+                display: flex;
+                align-items: center;
+                width: 10rem;
+                justify-content: space-between;
+                padding: 0.5em 1em;
+                border-radius: 0.5rem;
+                transition: 0.5s ease all;
+                border: 2px solid var(--color-1);
+
+                .showIcon {
+                    font-size: 1.25rem;
+                    color: var(--color-3);
+                }
+                .deleteIcon {
+                    font-size: 1.25rem;
+                    width: 2rem;
+                    height: 2rem;
+                    margin-left: -0.25rem;
+                    color: var(--danger);
+                    transition: all 0.5s ease;
+                    &:hover {
+                        scale: 1.5;
+                    }
+                }
+                .index {
+                    background-color: var(--color-1);
+                    width: 4ch;
+                    height: 4ch;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    color: white;
+                    transition: 0.5s ease all;
+                }
+
+                &:hover {
+                    color: white;
+                    background-color: var(--color-1);
+
+                    .index {
+                        background-color: white;
+                        color: var(--color-1);
+                    }
+                }
+            }
+
+            .cordination {
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+            }
+        }
+    }
+}

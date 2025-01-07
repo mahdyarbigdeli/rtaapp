@@ -33,37 +33,6 @@ export const transactionColumnDefs: ColDef[] = [
   { headerName: "مقدار", field: "amount" },
   { headerName: "مقدار تخفیف", field: "discount_amount" },
   { headerName: "روش پرداخت", field: "payment_method" },
-  {
-    headerName: "وضعیت",
-    field: "status",
-    cellRenderer: (props: any) => {
-      return (
-        <CellStatus
-          defaultValue={props.value}
-          options={[
-            {
-              icon: <Icon icon='mdi:receipt-text-pending' />,
-              label: "در انتظار",
-              value: "PENDING",
-              variant: "warning",
-            },
-            {
-              icon: <Icon icon='ic:baseline-cancel' />,
-              label: "لغو شده",
-              value: "CANCEL",
-              variant: "danger",
-            },
-            {
-              icon: <Icon icon="el:ok-sign" />,
-              label: "تایید شده",
-              value: "SETTLE",
-              variant: "success",
-            },
-          ]}
-        />
-      );
-    },
-  },
   { headerName: "کد مرجع", field: "reference_code" },
   { headerName: "ایجاد شده در", field: "created_at" },
   { headerName: "به روز شده در", field: "updated_at" },

@@ -1,0 +1,19 @@
+.modal {
+    width: 70dvw;
+    height: max-content;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2rem) !important;
+    border-radius: 1rem;
+}
+
+.root {
+    z-index: 99999 !important;
+}
+
+@media only screen and (max-width: "500px") {
+    .modal {
+        width: 90dvw;
+        margin: auto !important;
+    }
+}

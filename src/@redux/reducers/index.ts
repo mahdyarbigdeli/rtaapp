@@ -7,7 +7,6 @@ import activePagesSlice from "../slices/ActivePagesSlice";
 const persistConfig = {
   key: "hub-app",
   storage,
-  blacklist: ["activePages"],
 };
 
 const rootReducer = combineReducers({

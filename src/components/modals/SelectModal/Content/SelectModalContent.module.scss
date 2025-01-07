@@ -1,0 +1,35 @@
+.selectedValues {
+    display: flex !important ;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    flex-wrap: wrap;
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 5rem;
+        background-color: white;
+        color: var(--color-primary);
+        padding: 0.4em 0.5em;
+        padding-left: 1em;
+        font-size: 0.8rem;
+        border-radius: 100rem;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: 0.5s ease all;
+        .delete {
+            background-color: var(--color-danger);
+            color: white;
+            font-size: 0.7rem;
+            border-radius: 50%;
+            padding: 0.25rem;
+        }
+        &:hover {
+            .delete {
+                background-color: var(--color-danger);
+                color: white;
+            }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+.search {
+    position: absolute;
+    z-index: 1000;
+    top: 1rem;
+    left: 2rem;
+    right: 2rem;
+    width: max-content;
+    margin: auto;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0rem 0.3rem 0.3rem 0rem rgba(0, 0, 0, 0.2);
+    width: 15rem;
+    pointer-events: all !important;
+    .inputBox {
+        display: grid;
+        grid-template-columns: 1fr max-content;
+        align-items: center;
+        justify-content: end;
+        gap: 0.5rem;
+        background-color: white;
+        padding: 0.5em 1em;
+        font-size: 0.9rem;
+        input {
+            all: unset;
+            text-align: right;
+            cursor: pointer;
+            cursor: text;
+            direction: rtl;
+            width: 100%;
+        }
+        svg {
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-left: 1px solid rgba(0, 0, 0, 0.3);
+            padding-left: 0.5rem;
+        }
+    }
+
+    .resultsList {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        .item {
+            display: grid;
+            grid-template-columns: 1fr max-content;
+            align-items: center;
+            max-width: 50ch;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+            padding: 0.5em 1em;
+            text-align: right;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            animation: fade 0.5s ease;
+            &:last-child {
+                border-bottom: none;
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -193,7 +193,7 @@
             align-content: center;
             justify-content: center;
             gap: 0.25rem;
-            background-color: var(--color-warning);
+            background-color: var(--bs-warning);
             color: black;
             border-radius: 0.5rem;
             padding: 0.25em 1em;
@@ -234,6 +234,7 @@
         font-size: 5rem !important;
         border-radius: 1rem;
         object-fit: contain;
+        color: white;
         * {
             font-size: 5rem !important;
         }

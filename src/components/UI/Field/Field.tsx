@@ -108,7 +108,7 @@ function Component<T>(props: IFieldType<T>) {
           {RenderSingle()}
           {RenderMulti()}
           <label className={styles.noFile}>
-          <Icon icon="lucide:edit" />
+            <Icon icon='lucide:edit' />
             <span>انتخاب فایل</span>
             <input
               className={styles.input}
@@ -295,7 +295,7 @@ function Component<T>(props: IFieldType<T>) {
       <label className={styles.switch}>
         <ReactSwitch
           checked={value || false}
-          onChange={(value: any) => {
+          onChange={(value) => {
             onChange(value);
           }}
           name={name}
@@ -309,18 +309,23 @@ function Component<T>(props: IFieldType<T>) {
   const RenderImagePrevew = () => {
     if (type !== "image-preview") return <></>;
 
-    if (value)
+    if (value) {
+      let src = value;
+      if (value.name) {
+        src = URL.createObjectURL(value);
+      }
       return (
         <img
           className={styles.imagePreview}
-          src={value}
+          src={src}
         />
       );
+    }
     if (!value)
       return (
         <Icon
           className={styles.imagePreview}
-          icon='image'
+          icon='line-md:image'
         />
       );
   };

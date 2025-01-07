@@ -1,11 +1,10 @@
 import Field from "@/components/UI/Field/Field";
-import { Form, FormikProvider, useFormik } from "formik";
+import { FormikProvider, useFormik } from "formik";
 
 import { Icon } from "@iconify/react";
 import { LoginAPI } from "@/services/auth/auth.services";
 import { ILogin } from "@/types/auth.types";
 import Button from "@/components/UI/Button/Button";
-import styles from "./styles.module.scss";
 import { useMutation } from "react-query";
 import PageContianer from "@/components/layout/PageContainer/PageContianer";
 import { useDispatch } from "react-redux";
@@ -26,8 +25,10 @@ export default function LoginPage() {
   const { mutate, isLoading } = useMutation({
     mutationFn: LoginAPI,
     onSuccess: (data) => {
-      dispatcher(userActions.login(data.data.data));
-      navigate("/channels");
+      dispatcher(userActions.login(data.data));
+      setTimeout(() => {
+        navigate("/channels");
+      }, 200);
     },
   });
 

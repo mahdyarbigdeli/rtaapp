@@ -6,7 +6,7 @@ const PageMetaSlice = createSlice({
     title: "صفحه اصلی",
   },
   reducers: {
-    setPageMeta: (_state: any, { payload }) => {
+    setPageMeta: (state: any, { payload }) => {
       return payload;
     },
   },
