@@ -77,7 +77,7 @@ export default function AssigineeUser() {
           isFieldSet
           icon={<Icon icon='fluent:channel-add-16-regular' />}
           style={{
-            width: "30rem",
+            width: "20rem",
           }}>
           <Grid>
             <Field

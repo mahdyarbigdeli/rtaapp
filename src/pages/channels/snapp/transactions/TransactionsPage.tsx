@@ -192,60 +192,72 @@ export default function TransactionsPage() {
           glassMorphism
           style={{
             width: "90dvw",
+            maxHeight: "80dvh",
           }}>
-          <Grid>
-            <Flex
+          <Grid
+            gridTemplateColumns={"1fr max-content"}
+            alignItems='center'
+            responsive={{
+              mobile: {
+                gridTemplateColumns: "1fr",
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "column",
+              },
+            }}>
+            <Grid
+              gridTemplateColumns={"max-content 15rem 15rem 15rem"}
               gap='1rem'
               alignItems='center'
-              justifyContent='end'>
-              <Grid expanded={values.setting}>
-                <Grid
-                  gridTemplateColumns={"max-content 15rem 15rem 15rem"}
-                  gap='1rem'
-                  alignItems='center'>
-                  <Button
-                    icon={<Icon icon='formkit:submit' />}
-                    onClick={submitForm}
-                    title='ثبت'
-                    variant='success'
-                    disabled={!values.amount || !values.token}
-                  />
-                  <Field
-                    icon={<Icon icon='material-symbols:price-check' />}
-                    name='amount'
-                    onChange={handleChange}
-                    type='number'
-                    title='مقدار'
-                    value={values.amount}
-                  />
-                  <Field
-                    icon={<Icon icon='tabler:discount-filled' />}
-                    name='discountAmount'
-                    onChange={handleChange}
-                    title='تخفیف'
-                    type='text'
-                    value={values.discountAmount}
-                  />
-                  <Field
-                    icon={<Icon icon='oui:token-key' />}
-                    name='token'
-                    onChange={handleChange}
-                    title='توکن'
-                    type='text'
-                    value={values.token}
-                  />
-                </Grid>
-              </Grid>
-              <Flex>
-                <Button
-                  icon={<Icon icon='weui:setting-filled' />}
-                  onClick={() => {
-                    setFieldValue("setting", !values.setting);
-                  }}
-                  title='نمایش ایجاد'
-                  variant='primary'
-                />
-              </Flex>
+              expanded={values.setting}
+              responsive={{
+                mobile: {
+                  gridTemplateColumns: "1fr",
+                  display: "flex",
+                  flexDirection: "column-reverse",
+                },
+              }}>
+              <Button
+                icon={<Icon icon='formkit:submit' />}
+                onClick={submitForm}
+                title='ثبت'
+                variant='success'
+                disabled={!values.amount || !values.token}
+              />
+              <Field
+                icon={<Icon icon='material-symbols:price-check' />}
+                name='amount'
+                onChange={handleChange}
+                type='number'
+                title='مقدار'
+                value={values.amount}
+              />
+              <Field
+                icon={<Icon icon='tabler:discount-filled' />}
+                name='discountAmount'
+                onChange={handleChange}
+                title='تخفیف'
+                type='text'
+                value={values.discountAmount}
+              />
+              <Field
+                icon={<Icon icon='oui:token-key' />}
+                name='token'
+                onChange={handleChange}
+                title='توکن'
+                type='text'
+                value={values.token}
+              />
+            </Grid>
+            <Flex>
+              <Button
+                icon={<Icon icon='weui:setting-filled' />}
+                onClick={() => {
+                  setFieldValue("setting", !values.setting);
+                }}
+                title='نمایش ایجاد'
+                variant='primary'
+              />
             </Flex>
           </Grid>
           <Grid>

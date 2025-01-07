@@ -49,13 +49,3 @@
     }
 }
 
-@media only screen and (max-width: 400px) {
-    .pageContainer {
-        height: max-content !important;
-        overflow: auto !important;
-        max-height: 100dvh;
-        align-items: start !important;
-        justify-content: center !important;
-        padding-bottom: 5em !important;
-    }
-}

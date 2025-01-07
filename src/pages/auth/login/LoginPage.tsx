@@ -25,10 +25,9 @@ export default function LoginPage() {
   const { mutate, isLoading } = useMutation({
     mutationFn: LoginAPI,
     onSuccess: (data) => {
-      // it hast to be changed
       dispatcher(userActions.login(data.data));
       setTimeout(() => {
-        // navigate("/channels");
+        navigate("/channels");
       }, 200);
     },
   });
@@ -57,35 +56,43 @@ export default function LoginPage() {
           icon={<Icon icon='material-symbols:login-sharp' />}
           isFieldSet
           style={{
-            width: "30rem",
+            width: "20rem",
           }}>
-          <Grid>
-            <Grid>
-              <Field
-                icon={<Icon icon='solar:user-bold' />}
-                name='username'
-                onChange={handleChange}
-                title='نام کاربری'
-                type='text'
-                value={values.username}
-              />
-              <Field
-                icon={<Icon icon='mdi:password' />}
-                name='password'
-                onChange={handleChange}
-                title='رمز عبور'
-                type='password'
-                value={values.password}
-              />
-            </Grid>
-            <Flex justifyContent='end'>
-              <Button
-                icon={<Icon icon='formkit:submit' />}
-                onClick={submitForm}
-                title='ورود'
-                variant='success'
+          <Grid gap='1rem'>
+            <Flex center>
+              <img
+                src='/images/channels/snapp.png'
+                alt=''
               />
             </Flex>
+            <Grid>
+              <Grid>
+                <Field
+                  icon={<Icon icon='solar:user-bold' />}
+                  name='username'
+                  onChange={handleChange}
+                  title='نام کاربری'
+                  type='text'
+                  value={values.username}
+                />
+                <Field
+                  icon={<Icon icon='mdi:password' />}
+                  name='password'
+                  onChange={handleChange}
+                  title='رمز عبور'
+                  type='password'
+                  value={values.password}
+                />
+              </Grid>
+              <Flex justifyContent='end'>
+                <Button
+                  icon={<Icon icon='formkit:submit' />}
+                  onClick={submitForm}
+                  title='ورود'
+                  variant='success'
+                />
+              </Flex>
+            </Grid>
           </Grid>
         </Box>
       </FormikProvider>

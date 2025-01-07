@@ -57,15 +57,22 @@ export default function CreateUser() {
           header='ایجاد کاربری'
           isFieldSet
           style={{
-            width: "max-content",
             maxHeight: "80dvh",
+            maxWidth: "40rem",
+            width: "90dvw",
           }}>
           <Grid gap='0'>
             <Box
               header='فیلد های اجباری'
               isFieldSet
               icon={<Icon icon='mdi:required-circle' />}>
-              <Grid gridTemplateColumns={"1fr 1fr"}>
+              <Grid
+                gridTemplateColumns={"1fr 1fr"}
+                responsive={{
+                  mobile: {
+                    gridTemplateColumns: "1fr",
+                  },
+                }}>
                 <Grid>
                   <Field
                     type='text'
@@ -145,7 +152,13 @@ export default function CreateUser() {
                 isFieldSet
                 icon={<Icon icon='material-symbols:admin-panel-settings' />}>
                 <Grid>
-                  <Grid gridTemplateColumns={"1fr 1fr"}>
+                  <Grid
+                    gridTemplateColumns={"1fr 1fr"}
+                    responsive={{
+                      mobile: {
+                        gridTemplateColumns: "1fr",
+                      },
+                    }}>
                     <Field
                       type='text'
                       name='admin_profile.full_name'
@@ -169,7 +182,12 @@ export default function CreateUser() {
                     icon={<Icon icon='line-md:image' />}>
                     <Grid
                       gridTemplateColumns={"1fr 7rem"}
-                      alignItems='center'>
+                      alignItems='center'
+                      responsive={{
+                        mobile: {
+                          gridTemplateColumns: "1fr",
+                        },
+                      }}>
                       <Field
                         type='file'
                         name='admin_profile.profile_picture'
@@ -202,7 +220,13 @@ export default function CreateUser() {
                 header='اطلاعات فروشنده'
                 isFieldSet
                 icon={<Icon icon='solar:user-bold' />}>
-                <Grid gridTemplateColumns={"1fr 1fr"}>
+                <Grid
+                  gridTemplateColumns={"1fr 1fr"}
+                  responsive={{
+                    mobile: {
+                      gridTemplateColumns: "1fr",
+                    },
+                  }}>
                   <Grid
                     gridColumn={"-1/1"}
                     height={"20rem"}
@@ -236,7 +260,12 @@ export default function CreateUser() {
 
                   <Grid
                     gridColumn={"-1/1"}
-                    gridTemplateColumns={"1fr 1fr"}>
+                    gridTemplateColumns={"1fr 1fr"}
+                    responsive={{
+                      mobile: {
+                        gridTemplateColumns: "1fr",
+                      },
+                    }}>
                     <Field
                       type='text'
                       name='supplier_profile.lat'
@@ -254,7 +283,6 @@ export default function CreateUser() {
                       icon={<Icon icon='mdi:longitude' />}
                       title='طول جغرافیایی'
                       disabled
-
                     />
                   </Grid>
 
@@ -334,7 +362,12 @@ export default function CreateUser() {
                       icon={<Icon icon='line-md:image' />}>
                       <Grid
                         gridTemplateColumns={"1fr 7rem"}
-                        alignItems='center'>
+                        alignItems='center'
+                        responsive={{
+                          mobile: {
+                            gridTemplateColumns: "1fr",
+                          },
+                        }}>
                         <Field
                           type='file'
                           name='supplier_profile.profile_picture'
@@ -371,7 +404,13 @@ export default function CreateUser() {
                 header='اطلاعات مشتری'
                 icon={<Icon icon='carbon:customer' />}
                 isFieldSet>
-                <Grid gridTemplateColumns={"1fr 1fr"}>
+                <Grid
+                  gridTemplateColumns={"1fr 1fr"}
+                  responsive={{
+                    mobile: {
+                      gridTemplateColumns: "1fr",
+                    },
+                  }}>
                   <Grid gridColumn={"-1/1"}>
                     <Box
                       header='عکس پروفایل'
@@ -379,7 +418,12 @@ export default function CreateUser() {
                       icon={<Icon icon='line-md:image' />}>
                       <Grid
                         gridTemplateColumns={"1fr 7rem"}
-                        alignItems='center'>
+                        alignItems='center'
+                        responsive={{
+                          mobile: {
+                            gridTemplateColumns: "1fr",
+                          },
+                        }}>
                         <Field
                           type='file'
                           name='customer_profile.profile_picture'
