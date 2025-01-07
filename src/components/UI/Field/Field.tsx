@@ -23,7 +23,7 @@ function Component<T>(props: IFieldType<T>) {
     title,
     validation,
     value,
-    styles: userStyles
+    styles: userStyles,
     viariant = "glassMorphism"
   } = props;
 

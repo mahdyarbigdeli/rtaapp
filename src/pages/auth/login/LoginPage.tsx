@@ -25,7 +25,8 @@ export default function LoginPage() {
   const { mutate, isLoading } = useMutation({
     mutationFn: LoginAPI,
     onSuccess: (data) => {
-      dispatcher(userActions.login(data.data));
+      // it hast to be changed
+      dispatcher(userActions.login(data.dat));
       setTimeout(() => {
         navigate("/channels");
       }, 200);
