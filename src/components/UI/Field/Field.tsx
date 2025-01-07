@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 import "./styles.module.scss";
 import ReactSwitch from "react-switch";
-import Checkbox from "@mui/joy/checkbox";
+import {Checkbox} from "@mui/joy";
 
 import { genericMemo } from "@/utils/Generator";
 import styles from "./styles.module.scss";
@@ -23,8 +23,8 @@ function Component<T>(props: IFieldType<T>) {
     title,
     validation,
     value,
-    styles: userStyles,
-    viariant = "glassMorphism",
+    styles: userStyles
+    viariant = "glassMorphism"
   } = props;
 
   const name = props.name as any;
