@@ -20,7 +20,7 @@ const apiRoutes = {
     cancelTransaction: (id: string) => `/snappay/transactions/${id}/cancel/`,
     finalizeTransaction: (id: string) =>
       `/snappay/transactions/${id}/finalize/`,
-    updateStatus: `/snappay/transactions/status/`,
+    getByID: `/snappay/transactions/status/`,
   },
 };
 

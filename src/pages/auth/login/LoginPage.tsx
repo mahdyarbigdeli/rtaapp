@@ -61,7 +61,7 @@ export default function LoginPage() {
           <Grid gap='1rem'>
             <Flex center>
               <img
-                src='/images/channels/snapp.png'
+                src='/images/logo/vite.svg'
                 alt=''
               />
             </Flex>

@@ -1,5 +1,7 @@
 import { ColDef } from "@ag-grid-community/core";
-import CellStatus from "@/components/UI/Table/Components/Cells/CellStatus/CellStatus";
+import CellStatus, {
+  IStatusType,
+} from "@/components/UI/Table/Components/Cells/CellStatus/CellStatus";
 import { Icon } from "@iconify/react/dist/iconify.js";
 export interface ITransactionsParams {
   amount: number;
@@ -25,7 +27,10 @@ export interface ITransaction {
 }
 
 export const transactionColumnDefs: ColDef[] = [
-  { headerName: "شناسه تراکنش", field: "transaction_id" },
+  {
+    headerName: "شناسه تراکنش",
+    field: "transaction_id",
+  },
   { headerName: "کد شعبه", field: "branch_code" },
   { headerName: "نام شعبه", field: "branch_name" },
   { headerName: "شناسه ترمینال", field: "terminal_id" },
@@ -33,7 +38,25 @@ export const transactionColumnDefs: ColDef[] = [
   { headerName: "مقدار", field: "amount" },
   { headerName: "مقدار تخفیف", field: "discount_amount" },
   { headerName: "روش پرداخت", field: "payment_method" },
-  { headerName: "کد مرجع", field: "reference_code" },
-  { headerName: "ایجاد شده در", field: "created_at" },
-  { headerName: "به روز شده در", field: "updated_at" },
+];
+
+export const transactionsStatus: IStatusType[] = [
+  {
+    icon: <Icon icon='mdi:receipt-text-pending' />,
+    label: "در انتظار",
+    value: "PENDING",
+    variant: "warning",
+  },
+  {
+    icon: <Icon icon='ic:baseline-cancel' />,
+    label: "لغو شده",
+    value: "CANCEL",
+    variant: "danger",
+  },
+  {
+    icon: <Icon icon='el:ok-sign' />,
+    label: "تایید شده",
+    value: "SETTLE",
+    variant: "success",
+  },
 ];

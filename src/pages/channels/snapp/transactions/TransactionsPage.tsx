@@ -6,6 +6,8 @@ import Flex from "@/components/UI/Flex/Flex";
 import Grid from "@/components/UI/Grid/Grid";
 import CellButton from "@/components/UI/Table/Components/Cells/CellButton/CellButton";
 import CellStatus from "@/components/UI/Table/Components/Cells/CellStatus/CellStatus";
+import DateFilter from "@/components/UI/Table/Components/FloatingFilter/DateFilter/DateFilter";
+import SelectFilter from "@/components/UI/Table/Components/FloatingFilter/SelectFilter/SelectFilter";
 import CellContainer from "@/components/UI/Table/Containers/CellContainer/CellContainer";
 import useTable from "@/components/UI/Table/Hooks/useTable";
 import ListView from "@/components/UI/Table/ListView/ListView";
@@ -15,13 +17,15 @@ import {
   CreateTransactionsAPI,
   FinalizeTransactionAPI,
   GetAllTransactionsAPI,
-  UpdateTransactionStatusAPI,
+  GetTransactionByIdAPI,
 } from "@/services/snapp/transactions.servoces";
 import {
   ITransaction,
   ITransactionsParams,
   transactionColumnDefs,
+  transactionsStatus,
 } from "@/types/snapp/transactions/transactions.types";
+import { getTimeFromDate } from "@/utils/Converters";
 import { ColDef } from "@ag-grid-community/core";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { FormikProvider, useFormik } from "formik";
@@ -41,6 +45,8 @@ export default function TransactionsPage() {
     setCurrentPage,
     forceRefresh,
     isLoading,
+    setParams,
+    params,
   } = useTable<ITransaction>({
     api: GetAllTransactionsAPI,
     initialPage: 1,
@@ -88,56 +94,87 @@ export default function TransactionsPage() {
 
   const { mutate: updateStatusMutate, isLoading: updateMutateLoading } =
     useMutation({
-      mutationFn: UpdateTransactionStatusAPI,
+      mutationFn: GetTransactionByIdAPI,
       onSuccess() {
         forceRefresh();
       },
     });
 
   const colDefs: ColDef[] = [
+    ...transactionColumnDefs,
     {
       headerName: "وضعیت",
       field: "status",
+      floatingFilter: true,
+      filter: true,
       cellRenderer: (props: any) => {
         const transaction_id = props.data.transaction_id;
         return (
           <CellContainer
-            // onClick={() => {
-            //   ShowQuestion({
-            //     onConfirm() {
-            //       updateStatusMutate(transaction_id);
-            //     },
-            //   });
-            // }}
-            >
+            onClick={() => {
+              ShowQuestion({
+                onConfirm() {
+                  updateStatusMutate(transaction_id);
+                },
+              });
+            }}>
             <CellStatus
               defaultValue={props.value}
-              options={[
-                {
-                  icon: <Icon icon='mdi:receipt-text-pending' />,
-                  label: "در انتظار",
-                  value: "PENDING",
-                  variant: "warning",
-                },
-                {
-                  icon: <Icon icon='ic:baseline-cancel' />,
-                  label: "لغو شده",
-                  value: "CANCEL",
-                  variant: "danger",
-                },
-                {
-                  icon: <Icon icon='el:ok-sign' />,
-                  label: "تایید شده",
-                  value: "SETTLE",
-                  variant: "success",
-                },
-              ]}
+              options={transactionsStatus}
             />
           </CellContainer>
         );
       },
+      floatingFilterComponent: (props: any) => {
+        return (
+          <SelectFilter
+            {...props}
+            options={transactionsStatus}
+            onChnage={(value) => {
+              setParams((prev: any) => {
+                return {
+                  ...prev,
+                  status: value,
+                };
+              });
+            }}
+            value={params.status}
+          />
+        );
+      },
     },
-    ...transactionColumnDefs,
+    {
+      headerName: "تاریخ",
+      field: "created_at",
+      floatingFilter: true,
+      filter: true,
+      floatingFilterComponent: (props: any) => {
+        return <DateFilter {...props} />;
+      },
+      floatingFilterComponentParams: () => {
+        return {
+          onChange: (date: string) => {
+            setParams((prev: any) => {
+              return {
+                ...prev,
+                created_at: date,
+              };
+            });
+          },
+          value: params.created_at,
+        };
+      },
+    },
+    {
+      headerName: "زمان",
+      field: "created_at",
+      floatingFilter: false,
+      filter: false,
+      cellDataType: "time",
+      cellRenderer: (props: any) => {
+        return <p>1</p>;
+      },
+    },
     {
       headerName: "کنترل ها",
       field: "id",
@@ -156,13 +193,13 @@ export default function TransactionsPage() {
                   },
                 });
               }}
-              disabled={data.status !== "PENDING"}
+              disabled={data.status === "CANCEL"}
             />
             <CellButton
               icon={<Icon icon='material-symbols:cancel-outline-rounded' />}
               title='نهایی کردن'
               variant='success'
-              disabled={data.status !== "PENDING"}
+              disabled={data.status === "CANCEL" || data.status === "SETTLE"}
               onClick={() => {
                 ShowQuestion({
                   onConfirm() {
@@ -267,7 +304,10 @@ export default function TransactionsPage() {
               data={data}
               forceRefresh={forceRefresh}
               isLoading={isLoading}
-              onFilterChange={() => {}}
+              onFilterChange={(filters) => {
+                console.log(filters);
+                // setParams(filters);
+              }}
               onSortChange={() => {}}
               autoHeight
               tableKey='transactions-table'

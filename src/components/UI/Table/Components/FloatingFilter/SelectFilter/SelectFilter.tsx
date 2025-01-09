@@ -10,16 +10,20 @@ interface IOptiosType {
 
 interface ISelectOptions extends IFloatingFilterParams {
   options: IOptiosType[];
+  onChnage: (value: any) => void;
+  value: any;
 }
 
-function SelectFilter({ options, parentFilterInstance }: ISelectOptions) {
+function SelectFilter({
+  options,
+  parentFilterInstance,
+  onChnage,
+  value,
+}: ISelectOptions) {
   const [selectOptions, setSelectOptions] = useState<IOptiosType[]>([]);
   const handleChange = (e: any) => {
     const value = e.target.value;
-
-    parentFilterInstance((instance) => {
-      instance.onFloatingFilterChanged("equal", value);
-    });
+    onChnage(value);
   };
 
   useEffect(() => {
@@ -37,7 +41,8 @@ function SelectFilter({ options, parentFilterInstance }: ISelectOptions) {
         onChange={(e) => handleChange(e)}
         className={styles.select}
         name=''
-        id=''>
+        id=''
+        value={value}>
         {selectOptions.map((item) => {
           return (
             <option

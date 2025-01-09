@@ -24,7 +24,7 @@ function Component<T>(props: IFieldType<T>) {
     validation,
     value,
     styles: userStyles,
-    viariant = "glassMorphism"
+    viariant = "glassMorphism",
   } = props;
 
   const name = props.name as any;

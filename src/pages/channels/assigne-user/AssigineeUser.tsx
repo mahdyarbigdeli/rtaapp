@@ -94,7 +94,7 @@ export default function AssigineeUser() {
               icon={<Icon icon='mdi:rename' />}
               onChange={handleChange}
               value={values.user}
-              title='نام کاربر'
+              title='نام کانال'
               editable={true}
               onOpenModal={openSelectUserModal}
               selectKeys={{

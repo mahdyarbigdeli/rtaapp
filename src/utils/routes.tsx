@@ -51,6 +51,21 @@ export const routes: IRoute[] = [
     ],
   },
   {
+    title: "استعلام وضعیت تراکنش",
+    icon: <Icon icon='uil:channel' />,
+    path: "/search",
+    allowedRoles: ["admin", "supplier"],
+    childrens: [
+      {
+        title: "وضعیت تراکنش",
+        childrens: [],
+        icon: <Icon icon='uil:channel' />,
+        path: "/search/transaction",
+        allowedRoles: ["admin", "supplier"],
+      },
+    ],
+  },
+  {
     title: "کاربران",
     childrens: [
       {
@@ -58,6 +73,13 @@ export const routes: IRoute[] = [
         childrens: [],
         icon: <Icon icon='uil:channel' />,
         path: "/users/create",
+        allowedRoles: ["admin"],
+      },
+      {
+        title: "لیست کاربران",
+        childrens: [],
+        icon: <Icon icon='uil:channel' />,
+        path: "/users/list",
         allowedRoles: ["admin"],
       },
     ],

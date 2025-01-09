@@ -7,12 +7,11 @@ import axiosConfig from "@/utils/axiosConfig";
 const { postRequest, getRequest } = axiosConfig;
 import { VITE_API_URL } from "@/utils/ENV";
 
-const { create, list, cancelTransaction, finalizeTransaction, updateStatus } =
+const { create, list, cancelTransaction, finalizeTransaction, getByID } =
   apiRoutes.snappay;
 
 export const GetAllTransactionsAPI = async (params: any) => {
   const url = `${VITE_API_URL}${list}`;
-  console.log(url);
   return getRequest<ITransaction[]>(url, params);
 };
 
@@ -35,8 +34,8 @@ export const FinalizeTransactionAPI = async (transaction_id: string) => {
   const res = await postRequest(url);
   return res;
 };
-export const UpdateTransactionStatusAPI = async (transaction_id: string) => {
-  const url = `${VITE_API_URL}${updateStatus}`;
+export const GetTransactionByIdAPI = async (transaction_id: string) => {
+  const url = `${VITE_API_URL}${getByID}`;
   const res = await postRequest(url, {
     transaction_id: transaction_id,
   });

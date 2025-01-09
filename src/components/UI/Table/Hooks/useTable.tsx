@@ -31,7 +31,7 @@ function useTable<T>({
 
   const [currentPage, setCurrentPage] = useState(initialPage);
 
-  const [params, setParams] = useState();
+  const [params, setParams] = useState<any>({});
 
   const [searchs, setSearchs] = useState<ISearch<T>>(initialSearchs);
 
@@ -49,6 +49,7 @@ function useTable<T>({
     {
       queryFn: async () => {
         const { data, meta } = await api({
+          ...params,
           page: currentPage || 1,
           per_page: 14,
           ...searchs,
@@ -82,6 +83,7 @@ function useTable<T>({
     setSearchs,
     sorts,
     setSorts,
+    params,
   };
 }
 

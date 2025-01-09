@@ -1,52 +1,62 @@
 import { IFloatingFilterParams } from "ag-grid-community";
-import { DatePicker } from "jalaali-react-date-picker";
+import {
+  DatePicker,
+  InputRangePicker,
+  InputDatePicker,
+} from "jalaali-react-date-picker";
 import styles from "./styles.module.scss";
 import { useState } from "react";
 import { dateToJalai } from "@/utils/Converters";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import moment from "moment-jalaali";
 
-interface ISelectOptions extends IFloatingFilterParams {}
+interface ISelectOptions {
+  value: any;
+  onChange: (date?: string) => void;
+}
 
-export default function DateFilter({ parentFilterInstance }: ISelectOptions) {
-  const [dateTitle, setDateTitle] = useState<any>("");
+export default function DateFilter(props: ISelectOptions) {
+  const { onChange, value } = props;
 
-  const handleChange = (value?: Date) => {
-    setDateTitle(value ? dateToJalai(value) : "");
-    parentFilterInstance((instance) => {
-      instance.onFloatingFilterChanged("equal", value);
-    });
-  };
+  const [dateTitle, setDateTitle] = useState<any>(
+    value ? moment(value).format("jYYYY-jMM-jDD") : "",
+  );
 
-  const RenderCancel = () => {
-    if (dateTitle === "") return <></>;
-    return (
-      <div
-        className={styles.clear}
-        onClick={() => handleChange(undefined)}>
-        <Icon icon='cancel' />
-      </div>
-    );
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div
       className={`${styles.cellContainer} ${
         dateTitle !== "" && styles.hasValue
-      }`}>
-      <label className={styles.container}>
+      }`}
+      onClick={() => {
+        setIsOpen((prev) => !prev);
+      }}>
+      <div className={styles.container}>
         <div className={styles.title}>
-          {<Icon icon='date' />}
+          {!value && <Icon icon='clarity:date-solid' />}
+          {value && (
+            <Icon
+              icon='mdi:clear-box'
+              onClick={() => {
+                onChange(undefined);
+              }}
+            />
+          )}
           <span>{dateTitle}</span>
         </div>
-        <DatePicker
+        <InputDatePicker
+          open={isOpen}
           onChange={(event: any) => {
+            if (!event) return;
             const date = new Date(event._d);
-            handleChange(date);
+            const result = moment(date).format("YYYY-MM-DD");
+            onChange(result);
           }}
           className={styles.input}
+          wrapperClassName={styles.input}
         />
-      </label>
-      <RenderCancel />
+      </div>
     </div>
   );
 }

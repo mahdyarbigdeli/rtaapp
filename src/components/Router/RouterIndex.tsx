@@ -4,11 +4,10 @@ import ChannelsIndex from "@/pages/channels/Index";
 import UsersIndex from "@/pages/users";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
+import SearchIndex from "@/pages/search";
 
 export default function RouterIndex() {
   const { user } = useGlobalStates();
-
-  console.log(user);
 
   return (
     <BrowserRouter>
@@ -25,6 +24,13 @@ export default function RouterIndex() {
             <Route
               path='/channels/*'
               element={<ChannelsIndex />}
+            />
+          )}
+
+          {user.accessToken && (
+            <Route
+              path='/search/*'
+              element={<SearchIndex />}
             />
           )}
 
