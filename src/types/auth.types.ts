@@ -6,6 +6,12 @@ export interface ILogin {
   password: string;
 }
 
+export interface ILoginResponse {
+  status: string;
+  message: string;
+  data: IUser;
+}
+
 export interface IUser {
   userId: number;
   role: "admin" | "customer" | "supplier";
@@ -17,6 +23,7 @@ export interface IUser {
 
 interface Channel {
   snappay: boolean;
+  mini_pay: boolean;
 }
 
 export interface IAssigineChannel {

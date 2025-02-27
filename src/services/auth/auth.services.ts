@@ -1,4 +1,9 @@
-import { IAssigineChannel, ILogin, IUser } from "@/types/auth.types";
+import {
+  IAssigineChannel,
+  ILogin,
+  ILoginResponse,
+  IUser,
+} from "@/types/auth.types";
 import { IUserCU } from "@/types/users/users.types";
 import apiRoutes from "@/utils/apisRoutes";
 import axiosConfig from "@/utils/axiosConfig";
@@ -10,7 +15,7 @@ const { postRequest, getRequest } = axiosConfig;
 
 export const LoginAPI = (data: ILogin) => {
   const url = `${VITE_API_URL}${login}`;
-  return postRequest<IUser>(url, data);
+  return postRequest<ILoginResponse>(url, data);
 };
 
 export const RegisterAPI = (data: IUserCU) => {

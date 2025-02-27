@@ -51,13 +51,13 @@ export const routes: IRoute[] = [
     ],
   },
   {
-    title: "استعلام وضعیت تراکنش",
+    title: "جسجتو",
     icon: <Icon icon='uil:channel' />,
     path: "/search",
     allowedRoles: ["admin", "supplier"],
     childrens: [
       {
-        title: "وضعیت تراکنش",
+        title: "جستجوی تراکنش",
         childrens: [],
         icon: <Icon icon='uil:channel' />,
         path: "/search/transaction",

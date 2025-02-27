@@ -3,28 +3,25 @@ import Button from "@/components/UI/Button/Button";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 import styles from "./styles.module.scss";
-import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { GetTokenByCredentionals } from "@/services/channels/channels.services";
 
 export interface IChannelRoute {
   name: string;
-  path: "/snapp";
+  path: "/snapp" | "/mini-pay";
   icon: JSX.Element;
   image: string;
+  onActive: () => void;
 }
 
-export default function Channel({ image, path, icon, name }: IChannelRoute) {
+export default function Channel({
+  image,
+  path,
+  onActive,
+  icon,
+  name,
+}: IChannelRoute) {
   const { user } = useGlobalStates();
-
-  const navigate = useNavigate();
-
-  const { mutate } = useMutation({
-    mutationFn: GetTokenByCredentionals,
-    onSuccess(data) {
-      navigate("/channels/snapp/transactions/list");
-    },
-  });
 
   return (
     <div className={styles.channel}>
@@ -35,7 +32,7 @@ export default function Channel({ image, path, icon, name }: IChannelRoute) {
       <div className={styles.buttons}>
         <Button
           icon={<Icon icon='flowbite:bell-active-solid' />}
-          onClick={mutate}
+          onClick={onActive}
           title='فعال سازی'
           variant='success'
           disabled={user.channel.snappay === false}

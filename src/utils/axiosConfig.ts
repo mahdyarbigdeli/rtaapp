@@ -61,7 +61,7 @@ const postRequest = async <T>(
   url: string,
   data?: any,
   otherConfigs?: AxiosRequestConfig,
-): Promise<IResponseAxios<T>> => {
+): Promise<T> => {
   const res = await axios.post(url, data, otherConfigs);
   return res as any;
 };
