@@ -88,6 +88,8 @@ export interface ISetTransaction {
   purchase_password: string;
   supplier_transaction_id: string;
   resend_code_time: number;
+  Param1: 0;
+  Param2: 0;
 }
 
 export interface ISetTransactionResponse {

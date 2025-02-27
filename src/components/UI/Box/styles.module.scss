@@ -33,6 +33,32 @@
         align-items: center;
         justify-content: center;
     }
+
+    .alert {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        grid-column: -1/1;
+        align-items: center;
+        justify-content: end;
+        width: 100%;
+        padding: 1rem 2rem;
+        margin: 2rem 0;
+        margin-bottom: 1rem;
+        gap: 1rem;
+        border-radius: 0.25rem;
+        font-size: 1.25rem;
+    }
+
+    .success {
+        background-color: var(--bs-success) !important;
+        color: white;
+    }
+
+    .danger {
+        background-color: var(--bs-danger) !important;
+        color: white;
+    }
 }
 
 .glassMorphism {

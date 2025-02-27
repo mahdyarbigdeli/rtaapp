@@ -5,7 +5,7 @@ import Field from "@/components/UI/Field/Field";
 import Flex from "@/components/UI/Flex/Flex";
 import Grid from "@/components/UI/Grid/Grid";
 import Timer from "@/components/UI/Timer/Timer";
-import { ShowQuestion } from "@/components/UI/Toast/toast";
+import { ShowQuestion, ShowSuccess } from "@/components/UI/Toast/toast";
 import {
   GetInquiryAPI,
   PreTransactionAPI,
@@ -29,15 +29,19 @@ interface IUI {
   set_transaction: ISetTransaction;
 }
 
-export default function MiniPayPage() {
+export default function MiniPayTransaction() {
+  const [alertMessage, setAlertMessage] = useState("");
+
   const formik = useFormik({
     initialValues: {
       step: 1,
       get_inquiry: {
-        amount: "" as any,
+        amount: "10000" as any,
+        input: "09113242091",
+        // amount: "" as any,
+        // input: "",
         branch_id: "440001",
         branch_name: "string",
-        input: "",
         step: 1,
       },
       pre_transaction: {
@@ -47,11 +51,12 @@ export default function MiniPayPage() {
       set_transaction: {
         pre_transaction_id: "" as any,
         purchase_password: "",
-        supplier_transaction_id: 1,
+        supplier_transaction_id: 1 as any,
         Param1: 0,
-        Param2:0
+        Param2: 0,
+        resend_code_time: undefined as any,
       },
-    } as any,
+    } as IUI,
     onSubmit(values, formikHelpers) {
       const { step } = values;
       if (step === 1) {
@@ -103,6 +108,7 @@ export default function MiniPayPage() {
         "set_transaction.resend_code_time",
         data.content.purchase_password_details.purchase_password_resend_time,
       );
+      setAlertMessage(data.content.purchase_password_message);
       setFieldValue("step", 3);
     },
   });
@@ -114,18 +120,7 @@ export default function MiniPayPage() {
   } = useMutation({
     mutationFn: SetTransactionAPI,
     onSuccess(data, variables, context) {
-      alert("ok");
-      console.log(data);
-    },
-  });
-
-  const {
-    mutate: RefundTransactionMutate,
-    isLoading: RefundTransactionLoading,
-    error: RefundTransactionError,
-  } = useMutation({
-    mutationFn: RefundTransactionAPI,
-    onSuccess(data, variables, context) {
+      setAlertMessage("تراکنش با موفقیت انجام شد.");
       resetForm();
     },
   });
@@ -134,13 +129,18 @@ export default function MiniPayPage() {
 
   return (
     <PageContianer
-      title='مینی پی'
+      title='تراکنش'
       isLoading={GetInquiryLoading || PreTransactionLoading}>
       <FormikProvider value={formik}>
         <Box
-          header='مینی پی'
+          header='تراکنش'
           icon={<Icon icon='mingcute:wechat-pay-fill' />}
-          isFieldSet={true}>
+          isFieldSet={true}
+          alert={{
+            message: alertMessage,
+            duration: 5000,
+            status: "success",
+          }}>
           <Grid
             width={values.step > 1 ? "45rem" : "20rem"}
             gridTemplateColumns={`1fr 1fr`}>
@@ -234,15 +234,6 @@ export default function MiniPayPage() {
                 isFieldSet={true}
                 icon={<Icon icon='ix:inquiry-filled' />}>
                 <Grid>
-                  {/* <Field
-                    type='text'
-                    name='set_transaction.pre_transaction_id'
-                    title='شماره پیش تراکنش'
-                    icon={<Icon icon='lets-icons:order-fill' />}
-                    onChange={handleChange}
-                    value={values.set_transaction.pre_transaction_id}
-                    readOnly={true}
-                  /> */}
                   <Field
                     type='number'
                     name='set_transaction.purchase_password'
@@ -251,6 +242,7 @@ export default function MiniPayPage() {
                     onChange={handleChange}
                     value={values.set_transaction.purchase_password}
                   />
+
                   <Flex
                     color='white'
                     center
@@ -277,17 +269,15 @@ export default function MiniPayPage() {
                     </Grid>
                   </Flex>
 
-                  <Grid gridTemplateColumns={"1fr 1fr"}>
+                  <Flex
+                    center
+                    gap='1rem'>
                     <Button
                       icon={<Icon icon='formkit:submit' />}
                       onClick={() => {
-                        return;
                         ShowQuestion({
                           onConfirm() {
-                            RefundTransactionMutate({
-                              transaction_id:
-                                values.set_transaction.pre_transaction_id,
-                            });
+                            resetForm();
                           },
                         });
                       }}
@@ -300,7 +290,7 @@ export default function MiniPayPage() {
                       title='تایید'
                       variant='success'
                     />
-                  </Grid>
+                  </Flex>
                 </Grid>
               </Box>
             </Grid>
