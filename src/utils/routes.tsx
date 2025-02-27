@@ -51,7 +51,7 @@ export const routes: IRoute[] = [
     ],
   },
   {
-    title: "جسجتو",
+    title: "جستجو",
     icon: <Icon icon='uil:channel' />,
     path: "/search",
     allowedRoles: ["admin", "supplier"],

@@ -47,10 +47,11 @@ export default function MiniPayPage() {
       set_transaction: {
         pre_transaction_id: "" as any,
         purchase_password: "",
-        supplier_transaction_id: "",
-        resend_code_time: 0,
+        supplier_transaction_id: 1,
+        Param1: 0,
+        Param2:0
       },
-    } as IUI,
+    } as any,
     onSubmit(values, formikHelpers) {
       const { step } = values;
       if (step === 1) {

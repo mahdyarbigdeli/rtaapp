@@ -46,10 +46,10 @@ export default function SearchTransaction() {
 
   return (
     <PageContianer
-      title='جسجتوی تراکنش'
+      title='جستجوی تراکنش'
       isLoading={false}>
       <Box
-        header='جسجتوی تراکنش'
+        header='جستجوی تراکنش'
         icon={<Icon icon='mi:search' />}
         isFieldSet
         glassMorphism
