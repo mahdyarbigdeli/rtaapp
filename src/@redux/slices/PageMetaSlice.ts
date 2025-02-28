@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const PageMetaSlice = createSlice({
   name: "PageMeta",
   initialState: {
-    title: "صفحه اصلی",
+    title: "خانه",
   },
   reducers: {
     setPageMeta: (state: any, { payload }) => {

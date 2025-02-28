@@ -36,10 +36,8 @@ export default function MiniPayTransaction() {
     initialValues: {
       step: 1,
       get_inquiry: {
-        amount: "10000" as any,
-        input: "09113242091",
-        // amount: "" as any,
-        // input: "",
+        amount: "" as any,
+        input: "",
         branch_id: "440001",
         branch_name: "string",
         step: 1,

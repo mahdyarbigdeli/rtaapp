@@ -271,7 +271,6 @@ function Component<T>(props: IFieldType<T>) {
         <div
           className={styles.edit}
           onClick={() => {
-            console.log("aliii");
             onOpenModal();
           }}>
           <Icon icon='edit' />

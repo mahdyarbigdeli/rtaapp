@@ -5,7 +5,7 @@ import pageMetaReducer from "../slices/PageMetaSlice";
 import activePagesSlice from "../slices/ActivePagesSlice";
 
 const persistConfig = {
-  key: "hub-app",
+  key: "clinic-app",
   storage,
 };
 

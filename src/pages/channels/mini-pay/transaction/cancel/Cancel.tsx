@@ -15,7 +15,6 @@ export default function MiniPayCancelTransaction() {
   const { mutate, isLoading, error } = useMutation({
     mutationFn: RefundTransactionAPI,
     onSuccess(data, variables, context) {
-      console.log(data);
     },
   });
 

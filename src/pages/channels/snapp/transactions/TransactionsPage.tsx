@@ -305,8 +305,6 @@ export default function TransactionsPage() {
               forceRefresh={forceRefresh}
               isLoading={isLoading}
               onFilterChange={(filters) => {
-                console.log(filters);
-                // setParams(filters);
               }}
               onSortChange={() => {}}
               autoHeight
