@@ -1,30 +1,26 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { IFieldType } from "../../types/Field.types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 type Props<T> = {
   styles: any;
 } & IFieldType<T>;
 
 export default function FieldNormal<T>(props: Props<T>) {
-  const { type, name, value, placeHodler, styles, title } = props;
+  const {
+    type,
+    name,
+    value,
+    placeHodler,
+    styles,
+    title,
+    persianLetterFormmater = false,
+  } = props;
 
   const [isShow, setIsShow] = useState(false);
-
-  const [debouncedValue, setDebouncedValue] = useState("first_time_load");
-
-  useEffect(() => {
-    if (debouncedValue === "first_time_load") return;
-    if (debounce === 0) {
-      onChange(debouncedValue);
-      return;
-    }
-    const timer = setTimeout(() => {
-      onChange(debouncedValue);
-    }, debounce);
-
-    return () => clearTimeout(timer);
-  }, [debouncedValue]);
+  const [previewValue, setPreviewValue] = useState(
+    persianLetterFormmater ? Number.parseInt(value).toLocaleString() : value,
+  );
 
   if (type === "textarea") return <></>;
   if (type === "radio") return <></>;
@@ -38,24 +34,58 @@ export default function FieldNormal<T>(props: Props<T>) {
   if (type === "select") return <></>;
   if (type === "date") return <></>;
   if (type === "map") return <></>;
-  const { length, onChange, debounce = 0 } = props;
+  const { onChange } = props;
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!persianLetterFormmater) {
+      setPreviewValue(e.target.value);
+      onChange(e);
+      return;
+    }
+
+    const rawValue = e.target.value.replace(/,/g, ""); // Remove commas
+    if (!/^\d*$/.test(rawValue)) return; // Ensure only numbers
+
+    if (!rawValue) {
+      setPreviewValue(rawValue);
+      onChange(e);
+      return;
+    }
+
+    const formattedValue = persianLetterFormmater
+      ? Number.parseInt(rawValue).toLocaleString()
+      : rawValue;
+
+    setPreviewValue(formattedValue);
+    const temp = e;
+    temp.target.value = rawValue;
+    onChange(temp);
+  };
+
+  useEffect(() => {
+    setPreviewValue(
+      !!value === false
+        ? ""
+        : persianLetterFormmater
+        ? Number.parseInt(value).toLocaleString()
+        : value,
+    );
+  }, [value]);
 
   return (
     <>
       <input
         className={styles.input}
-        type={(isShow && "text") || type}
-        onChange={(event) => {
-          setDebouncedValue(event as any);
-        }}
+        type={"text"}
+        onChange={handleInputChange}
+        value={previewValue}
+        defaultValue={previewValue}
         name={name}
         placeholder={placeHodler}
         title={title}
-        defaultValue={value}
         autoComplete='new-password'
-        minLength={length?.min}
-        maxLength={length?.max}
         readOnly={false}
+        dir='ltr'
       />
       {type === "password" && !isShow && (
         <Icon

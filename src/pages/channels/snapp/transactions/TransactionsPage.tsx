@@ -267,8 +267,9 @@ export default function TransactionsPage() {
                 name='amount'
                 onChange={handleChange}
                 type='number'
-                title='مقدار'
+                title='مقدار (ریال)'
                 value={values.amount}
+                persianLetterFormmater={true}
               />
               <Field
                 icon={<Icon icon='tabler:discount-filled' />}
@@ -305,6 +306,8 @@ export default function TransactionsPage() {
               forceRefresh={forceRefresh}
               isLoading={isLoading}
               onFilterChange={(filters) => {
+                console.log(filters);
+                // setParams(filters);
               }}
               onSortChange={() => {}}
               autoHeight

@@ -44,6 +44,8 @@ export default function CreateUser() {
     onSuccess(data, variables, context) {},
   });
 
+  console.log(values);
+
   return (
     <PageContianer
       title='ایجاد کاربر'

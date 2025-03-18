@@ -56,6 +56,7 @@ interface Creditamount {
 export interface IPreTransaction {
   inquiry_id: string;
   credit_amount: number;
+  default_credit_amount: number;
 }
 
 export interface IPreTransactionResponse {

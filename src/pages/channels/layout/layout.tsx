@@ -24,7 +24,7 @@ export default function ChannelsLayout() {
       },
     },
     // #mini_pay
-    user.channel.minipay && {
+    true && {
       name: "مینی پی",
       icon: <Icon icon='arcticons:snappdriver' />,
       path: "/mini-pay",

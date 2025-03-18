@@ -271,6 +271,7 @@ function Component<T>(props: IFieldType<T>) {
         <div
           className={styles.edit}
           onClick={() => {
+            console.log("aliii");
             onOpenModal();
           }}>
           <Icon icon='edit' />
@@ -419,6 +420,8 @@ const Field = genericMemo(Component, (prev: any, n: any) => {
   const valueChanged = prev.value !== n.value;
   const chackedChanged = prev.checked !== n.checked;
   const disabled = prev.disabled != n.disabled;
+
+  
   if (validationChanged) return false;
   if (valueChanged) return false;
   if (chackedChanged) return false;

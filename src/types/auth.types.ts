@@ -23,7 +23,7 @@ export interface IUser {
 
 interface Channel {
   snappay: boolean;
-  minipay: boolean;
+  mini_pay: boolean;
 }
 
 export interface IAssigineChannel {

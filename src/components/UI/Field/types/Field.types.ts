@@ -23,6 +23,7 @@ export type ITextFieldType = {
   };
   value: string | number;
   onChange: (event: any) => void;
+  persianLetterFormmater?: boolean;
 };
 
 export type ITextAreaFieldType = {
@@ -145,6 +146,7 @@ export type IBase<T = any> = {
   viariant?: IVariant | "glassMorphism";
   isShow?: boolean;
   debounce?: number;
+  persianLetterFormmater?: boolean;
 } & (
   | ITextFieldType
   | IRadioFieldType

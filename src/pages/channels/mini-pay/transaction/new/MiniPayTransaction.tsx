@@ -36,6 +36,8 @@ export default function MiniPayTransaction() {
     initialValues: {
       step: 1,
       get_inquiry: {
+        // amount: "10000" as any,
+        // input: "09113242091",
         amount: "" as any,
         input: "",
         branch_id: "440001",
@@ -45,6 +47,7 @@ export default function MiniPayTransaction() {
       pre_transaction: {
         credit_amount: "" as any,
         inquiry_id: "",
+        default_credit_amount: "" as any,
       },
       set_transaction: {
         pre_transaction_id: "" as any,
@@ -88,6 +91,11 @@ export default function MiniPayTransaction() {
       setFieldValue("step", 2);
       setFieldValue("pre_transaction.inquiry_id", data.inquiry_id);
       setFieldValue("pre_transaction.credit_amount", values.get_inquiry.amount);
+      setFieldValue(
+        "pre_transaction.default_credit_amount",
+        data.content.installments_details[0].credit_amount
+          .default_credit_amount,
+      );
     },
   });
 
@@ -140,6 +148,7 @@ export default function MiniPayTransaction() {
             status: "success",
           }}>
           <Grid
+            gridColumn={"-1/1"}
             width={values.step > 1 ? "45rem" : "20rem"}
             gridTemplateColumns={`1fr 1fr`}>
             {/* Step 1 */}
@@ -162,10 +171,11 @@ export default function MiniPayTransaction() {
                   <Field
                     type='number'
                     name='get_inquiry.amount'
-                    title='مبلغ فاکتور (تومان)'
+                    title='مبلغ فاکتور (ریال)'
                     icon={<Icon icon='solar:tag-price-bold' />}
                     onChange={handleChange}
                     value={values.get_inquiry.amount}
+                    persianLetterFormmater={true}
                   />
                   <Flex justifyContent='end'>
                     <Button
@@ -189,6 +199,26 @@ export default function MiniPayTransaction() {
                 isFieldSet={true}
                 icon={<Icon icon='carbon:cics-transaction-server-zos' />}>
                 <Grid>
+                  <Grid
+                    gridColumn={"-1/1"}
+                    expanded={!!values.pre_transaction.default_credit_amount}>
+                    <Box
+                      header='اعتبار کیف پول'
+                      icon={<Icon icon='iconoir:credit-card-solid' />}
+                      isFieldSet={true}>
+                      <Grid
+                        color='white'
+                        display='flex'
+                        justifyContent='end'
+                        alignItems='center'
+                        gap='0.5rem'>
+                        <span>ریال</span>
+                        <span>
+                          {values.pre_transaction.default_credit_amount.toLocaleString()}
+                        </span>
+                      </Grid>
+                    </Box>
+                  </Grid>
                   <Field
                     type='text'
                     name='pre_transaction.inquiry_id'
@@ -201,11 +231,12 @@ export default function MiniPayTransaction() {
                   <Field
                     type='number'
                     name='pre_transaction.credit_amount'
-                    title='مقدار فاکتور ( تومان )'
+                    title='مبلغ فاکتور ( ریال )'
                     icon={<Icon icon='solar:tag-price-bold' />}
                     onChange={handleChange}
                     readOnly={true}
                     value={values.pre_transaction.credit_amount}
+                    persianLetterFormmater={true}
                   />
                   <Grid gridTemplateColumns={"1fr 1fr"}>
                     <Button

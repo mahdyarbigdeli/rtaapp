@@ -3,6 +3,7 @@ import CellStatus, {
   IStatusType,
 } from "@/components/UI/Table/Components/Cells/CellStatus/CellStatus";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import CellContainer from "@/components/UI/Table/Containers/CellContainer/CellContainer";
 export interface ITransactionsParams {
   amount: number;
   discountAmount: number;
@@ -35,7 +36,19 @@ export const transactionColumnDefs: ColDef[] = [
   { headerName: "نام شعبه", field: "branch_name" },
   { headerName: "شناسه ترمینال", field: "terminal_id" },
   { headerName: "توکن", field: "token" },
-  { headerName: "مقدار", field: "amount" },
+  {
+    headerName: "مقدار (ریال)",
+    field: "amount",
+    type: "price",
+    cellDataType: "prcie",
+    cellRenderer: ({ value }: { value: any }) => {
+      return (
+        <CellContainer>
+          <p>{(value as number).toLocaleString()}</p>
+        </CellContainer>
+      );
+    },
+  },
   { headerName: "مقدار تخفیف", field: "discount_amount" },
   { headerName: "روش پرداخت", field: "payment_method" },
 ];
